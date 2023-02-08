@@ -59,18 +59,18 @@ function QuestionListPage() {
 
       <p className={styles.count}>총 {questions.length}개 질문</p>
 
-      {questions.length === 0 ? (
-        <Warn
-          className={styles.emptyList}
-          title="조건에 맞는 질문이 없어요."
-          description="올바른 검색어가 맞는지 다시 한 번 확인해 주세요."
-        />
-      ) : (
+      {questions.length > 0 ? (
         <div className={styles.questionList}>
           {questions.map((question) => (
             <QuestionItem key={question.id} question={question} />
           ))}
         </div>
+      ) : (
+        <Warn
+          className={styles.emptyList}
+          title="조건에 맞는 질문이 없어요."
+          description="올바른 검색어가 맞는지 다시 한 번 확인해 주세요."
+        />
       )}
     </ListPage>
   );
